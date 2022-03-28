@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const seq = require('../connection/mysql_connect')
+const seq = require('../db_connect')
 
 const { STRING, INTEGER, BIGINT } = Sequelize
 
@@ -13,13 +13,13 @@ const CourseTabModel = seq.define('course_tab', {
     comment: 'course tab ID',
     type: INTEGER(4),
     allowNull: false,
-    unique: true, // sid唯一
+    unique: true // sid唯一
   },
   title: {
     comment: "course tab's name",
     type: STRING(30),
-    allowNull: false,
-  },
+    allowNull: false
+  }
 })
 
 module.exports = CourseTabModel

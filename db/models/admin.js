@@ -1,18 +1,18 @@
-const Sequelize = require("sequelize");
-const seq = require("../connection/mysql_connect");
-const { STRING, INTEGER, BIGINT } = Sequelize;
+const Sequelize = require('sequelize')
+const seq = require('../db_connect')
+const { STRING, INTEGER, BIGINT } = Sequelize
 
-const Admin = seq.define("admin", {
+const Admin = seq.define('admin', {
   username: {
-    comment: "admin user name",
+    comment: 'admin user name',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   password: {
-    comment: "crypto user password",
+    comment: 'crypto user password',
     type: STRING,
-    allowNull: false,
-  },
-});
+    allowNull: false
+  }
+})
 
-module.exports = Admin;
+module.exports = Admin

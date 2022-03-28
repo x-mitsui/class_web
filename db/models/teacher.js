@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const seq = require('../connection/mysql_connect')
+const seq = require('../db_connect')
 
 const { STRING, INTEGER, BIGINT, BOOLEAN } = Sequelize
 

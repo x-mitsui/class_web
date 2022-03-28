@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const seq = require('../connection/mysql_connect')
+const seq = require('../db_connect')
 
 const { STRING, INTEGER, BIGINT } = Sequelize
 
@@ -19,34 +19,34 @@ const CourseModel = seq.define('about', {
     comment: 'about id',
     type: INTEGER(10),
     allowNull: false,
-    unique: true,
+    unique: true
   },
   poseterUrl: {
     comment: 'the about url',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   title: {
     comment: 'the about name',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
   name: {
     comment: 'the about name',
     type: STRING(30),
-    allowNull: false,
+    allowNull: false
   },
   intro: {
     comment: 'about introduction',
     type: STRING,
-    allowNull: false,
+    allowNull: false
   },
 
   posterKey: {
     comment: 'about poster qiniu key',
     type: STRING,
-    allowNull: false,
-  },
+    allowNull: false
+  }
 })
 
 module.exports = CourseModel
