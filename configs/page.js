@@ -2,7 +2,9 @@ const env = require('./env_config'),
   isPrd = env.isPrd
 
 const URL = {
-  SOURCE: isPrd ? '//??/' : '//localhost:3300/'
+  SOURCE: isPrd
+    ? '//??/' //线上地址
+    : '//localhost:3300/' //webpack本地内存打包后地址
 }
 
 module.exports = {
