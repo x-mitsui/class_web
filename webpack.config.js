@@ -1,8 +1,8 @@
-const path = require('path'),
-  Uglify = require('uglifyjs-webpack-plugin'),
-  Autoprefixer = require('autoprefixer'),
-  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-  OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const path = require('path')
+const Uglify = require('uglifyjs-webpack-plugin')
+const Autoprefixer = require('autoprefixer')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const config = {
   mode: 'development',
@@ -12,7 +12,7 @@ const config = {
     error: path.resolve(__dirname, './src/js/error.js')
   },
   output: {
-    path: path.resolve(__dirname + '/public'),
+    path: path.resolve(__dirname, '/public'),
     filename: 'js/[name].js',
     publicPath: '/'
   },
@@ -20,7 +20,10 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+
+        use: {
+          loader: 'babel-loader'
+        },
         exclude: [path.resolve(__dirname, 'node_modules')]
       },
 
@@ -41,15 +44,7 @@ const config = {
 
           'css-loader',
 
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugin() {
-                return [autoprefixer('last 5 versions')]
-              }
-            }
-          },
-
+          'postcss-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -71,25 +66,32 @@ const config = {
 
           'css-loader',
 
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugin() {
-                return [autoprefixer('last 5 versions')]
-              }
-            }
-          }
+          'postcss-loader'
         ]
       },
 
       {
-        test: /\.(png|jpg|jpeg|gif|ico)$/i,
-        loader: ['url-loader?limit=2048&name=img/[name]-[hash:16].[ext]']
+        test: /\.(png|jpe?g|gif|svg)$/,
+        // type: "asset/resource", file-loader的效果
+        // type: "asset/inline", url-loader
+        type: 'asset',
+        generator: {
+          filename: 'img/[name].[hash:6][ext]'
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 100 * 1024
+          }
+        }
       },
 
       {
         test: /\.(woff2?|eot|ttf|oft|svg)(\?.*)?$/i,
-        loader: ['url-loader?name=fonts/[name].[ext]']
+
+        type: 'asset/resource',
+        generator: {
+          filename: 'font/[name].[hash:6][ext]'
+        }
       }
     ]
   },
@@ -103,12 +105,20 @@ const config = {
   ],
 
   devServer: {
-    watchOptions: {
-      ignoreed: /node_modules/
+    watchFiles: {
+      paths: ['src/**/*'],
+      options: {
+        ignored: /node_modules/
+      }
     },
-    open: true,
+    // static:path.resolve(__dirname,"app/public/"),
     host: 'localhost',
     port: 3300
+  },
+  stats: {
+    // preset: 'minimal',
+    // moduleTrace: true,
+    errorDetails: true
   }
 }
 
