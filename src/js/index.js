@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 import '../styles/resets.css'
 import '../styles/common.css'
 import '../styles/iconfont.css'
@@ -12,3 +10,8 @@ import '../styles/collection.scss'
 import '../styles/courseItem.scss'
 import '../styles/teacher.scss'
 import '../styles/footer.scss'
+import '../utils/init-polyfil'
+import { CAROUSEL_CONFIG } from '../config/config'
+import Carousel from '../modules/Carousel'
+
+new Carousel({ ...CAROUSEL_CONFIG }).init()
