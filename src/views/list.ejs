@@ -1,3 +1,10 @@
 <%- include("./layout/head.ejs",{CONFIG})%>
-  list
-  <%- include("./layout/foot.ejs",{CONFIG})%>
+<div class="container">
+  <%- include("./template/common/header/index.ejs",{navData})%>
+  <%- include("./template/list/nav/index.ejs",{courseTabData})%>
+
+  <%- include("./template/common/footer/index.ejs",{linkData, manualData, qr})%>
+
+</div>
+
+<%- include("./layout/foot.ejs",{CONFIG})%>
