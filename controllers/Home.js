@@ -1,5 +1,8 @@
 const page_config = require('../configs/page')
 const navData = require('../configs/nav')
+const linkData = require('../configs/links')
+const manualData = require('../configs/manual')
+const { qr } = require('../configs/qr')
 const { IMG_BASE_URL } = require('../configs/url')
 
 const { getSliderData } = require('../services/Slider')
@@ -31,7 +34,10 @@ class Index {
       collectionData,
       starTeacherData,
       excellentStudentData,
-      IMG_BASE_URL
+      IMG_BASE_URL,
+      linkData,
+      manualData,
+      qr
     })
   }
 
