@@ -13,7 +13,7 @@ class CollectionService {
       let ids = item.courseIdList.split(',').map((item) => Number(item))
       let collectionsData = await getCollectionCourseData(ids)
       console.log('collectionsData:', collectionsData)
-      item.courseIdList = collectionsData
+      item.courseDataList = collectionsData
       return item
     })
     // async返回的为包裹结果的Promise对象
