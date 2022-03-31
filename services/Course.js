@@ -10,6 +10,19 @@ class CourseService {
       raw: true
     })
   }
+
+  async getCourseData() {
+    return await CourseModel.findAll({
+      where: { status: 1 },
+      order: [
+        ['id', 'DESC'] //按id倒序
+      ],
+      attributes: {
+        exclude: ['cid', 'posterUrl', 'createdAt', 'updatedAt']
+      },
+      raw: true
+    })
+  }
 }
 
 module.exports = new CourseService()

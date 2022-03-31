@@ -3,7 +3,10 @@
   <%- include("./template/common/header/index.ejs",{navData})%>
   <%- include("./template/list/nav/index.ejs",{courseTabData})%>
 
+  <%- include("./template/list/courseList/index.ejs", {courseData, IMG_BASE_URL})%>
+
   <%- include("./template/common/footer/index.ejs",{linkData, manualData, qr})%>
+  <%- include("./datas/courseData.ejs",{linkData, manualData, qr})%>
 
 </div>
 
