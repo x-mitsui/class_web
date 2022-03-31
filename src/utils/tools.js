@@ -55,4 +55,8 @@ function debounce(func, delay) {
   }
 }
 
-export { getTarget, getEventType, Interval, throttle, debounce }
+function trimSpace(str) {
+  return str.replace(/\s+/g, '')
+}
+
+export { getTarget, getEventType, Interval, throttle, debounce, trimSpace }
