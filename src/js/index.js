@@ -12,6 +12,9 @@ import '../styles/teacher.scss'
 import '../styles/footer.scss'
 import '../utils/init-polyfil'
 import { CAROUSEL_CONFIG } from '../config/config'
+
 import Carousel from '../modules/Carousel'
+import HeaderSearch from '../modules/HeaderSearch'
 
 new Carousel({ ...CAROUSEL_CONFIG }).init()
+new HeaderSearch().init()
