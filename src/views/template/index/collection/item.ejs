@@ -1,0 +1,15 @@
+<div class="collection-item clearfix">
+  <div class="course-item"
+    style="background: url(<%= IMG_BASE_URL + item.posterImgKey%>) no-repeat; background-size:100% 100%;">
+    <h1 class="collection-tt"><%= item.title %> </h1>
+    <a href="<%= item.QQLink %> " class="btn btn-info" target="_blank">加入学习</a>
+  </div>
+  <% for (let i = 0; i < item.courseDataList.length; i++) {
+        const dataItem = item.courseDataList[i];
+        %>
+  <%- include('../../common/courseItem/index.ejs',{
+            item:dataItem,
+            IMG_BASE_URL
+        })%>
+  <% }  %>
+</div>

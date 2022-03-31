@@ -1,13 +1,15 @@
 <%- include("./layout/head.ejs",{CONFIG})%>
 <div class="container">
   <%- include("./template/common/header/index.ejs",{navData})%>
-  <%- include("./template/index/carousel/index.ejs",{sliderData,IMG_BASE_URL})%>
-  <%- include("./template/common/mainTitle/index.ejs",{title:"官方推荐课程",path:'/list',linkName:"更多课程"})%>
-  <%- include("./template/index/recomCourse/index.ejs",{recomCourseData,IMG_BASE_URL})%>
-  <%- include("./template/common/mainTitle/index.ejs",{title:"精品课程集合",path:'list',linkName:"更多课程"})%>
-  <%- include("./template/index/recomCourse/index.ejs",{  collectionData,IMG_BASE_URL})%>
-  <%- include("./template/common/mainTitle/index.ejs",{title:"全网优秀讲师",path:'https://msiwei.ke.qq.com/#category=-1&tab=2',linkName:"更多课程"})%>
-  <%- include("./template/common/mainTitle/index.ejs",{title:"JS++优秀学生",path:'https://msiwei.ke.qq.com',linkName:"更多信息"})%>
+  <%- include("./template/index/carousel/index.ejs",{sliderData, IMG_BASE_URL})%>
+  <%- include("./template/common/mainTitle/index.ejs",{title:"官方推荐课程", path:'/list', linkName:"更多课程"})%>
+  <%- include("./template/index/recomCourse/index.ejs",{recomCourseData, IMG_BASE_URL})%>
+  <%- include("./template/common/mainTitle/index.ejs",{title:"精品课程集合", path:'list', linkName:"更多课程"})%>
+  <%- include("./template/index/collection/index.ejs",{collectionData, IMG_BASE_URL})%>
+  <%- include("./template/common/mainTitle/index.ejs",{title:"全网优秀讲师", path:'https://msiwei.ke.qq.com/#category=-1&tab=2', linkName:"更多课程"})%>
+  <%- include("./template/index/teacher/index.ejs",{starTeacherData, IMG_BASE_URL})%>
+  <%- include("./template/common/mainTitle/index.ejs",{title:"JS++优秀学生", path:'https://msiwei.ke.qq.com', linkName:"更多信息"})%>
+  <%- include("./template/index/student/index.ejs",{excellentStudentData, IMG_BASE_URL})%>
 
 </div>
 

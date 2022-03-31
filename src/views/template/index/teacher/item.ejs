@@ -1,0 +1,25 @@
+<div class="teacher-item">
+  <div class="<%= (i+1) %2 === 0 ? 'img-wrap last': 'img-wrap' %> ">
+    <a href="<%= item.href %> " target="_blank">
+      <img src="<%= IMG_BASE_URL + item.profilePicKey %> " alt="<%= item.teacherName %> " class="teacher-img" />
+    </a>
+    <i class="triangle-right"></i>
+
+  </div>
+  <div class="teacher-info">
+    <div class="teacher-header">
+      <h1 class="teacher-name">
+        <a href="<%= item.href %> " target="_blank">
+          <%= item.name %>
+        </a>
+      </h1>
+    </div>
+    <p class="count">
+      <span>课程数:<%= item.courseNum %>门 </span>
+      <i></i>
+      <span>学生数:<%= item.studentsNum %>人 </span>
+    </p>
+    <p class="intro"><%=item.introduction%></p>
+  </div>
+  <!-- <i class="xxx"></i> -->
+</div>

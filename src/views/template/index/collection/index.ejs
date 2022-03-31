@@ -1,0 +1,7 @@
+<div class="collection-board">
+  <% for (var i = 0; i < collectionData.length; i++) {
+        const item = collectionData[i];    
+     %>
+  <%- include('./item.ejs',{item, IMG_BASE_URL})%>
+  <%}%>
+</div>

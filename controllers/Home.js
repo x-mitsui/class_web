@@ -5,6 +5,8 @@ const { IMG_BASE_URL } = require('../configs/url')
 const { getSliderData } = require('../services/Slider')
 const { getRecomCourseData } = require('../services/RecomCourse')
 const { getCollectionData } = require('../services/Collection')
+const { getStarTeacherData } = require('../services/Teacher')
+const { getStarStudentData } = require('../services/Student')
 class Index {
   async index(ctx, next) {
     // 通过ejs渲染出了HTML，
@@ -17,16 +19,20 @@ class Index {
     const recomCourseData = await getRecomCourseData()
     const collectionData = await getCollectionData()
     // console.log('collectionData:', collectionData)
+    const starTeacherData = await getStarTeacherData()
+    const excellentStudentData = await getStarStudentData()
     // note 调试小技巧，用ctx body调试
-    ctx.body = collectionData
-    // await ctx.render('index', {
-    //   CONFIG: page_config.INDEX,
-    //   navData,
-    //   sliderData,
-    //   recomCourseData,
-    //   collectionData,
-    //   IMG_BASE_URL
-    // })
+    // ctx.body = collectionData
+    await ctx.render('index', {
+      CONFIG: page_config.INDEX,
+      navData,
+      sliderData,
+      recomCourseData,
+      collectionData,
+      starTeacherData,
+      excellentStudentData,
+      IMG_BASE_URL
+    })
   }
 
   async list(ctx, next) {

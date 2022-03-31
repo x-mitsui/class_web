@@ -3,7 +3,7 @@
     <% for (let i = 0; i < sliderData.length; i++) {
             const item = sliderData[i];%>
 
-    <%- include('item.ejs',{i, item, IMG_BASE_URL})%>
+    <%- include('./item.ejs',{i, item, IMG_BASE_URL})%>
 
     <% } %>
   </ul>
