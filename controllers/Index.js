@@ -10,8 +10,9 @@ const { getRecomCourseData } = require('../services/RecomCourse')
 const { getCollectionData } = require('../services/Collection')
 const { getStarTeacherData } = require('../services/Teacher')
 const { getStarStudentData } = require('../services/Student')
+
 class Index {
-  async index(ctx, next) {
+  async render(ctx, next) {
     // 通过ejs渲染出了HTML，
     // 但是此HTML需要的css，js，img静态资源需要webpack打包提供，
     // 当然webpack不需要产生HTML
@@ -24,6 +25,7 @@ class Index {
     // console.log('collectionData:', collectionData)
     const starTeacherData = await getStarTeacherData()
     const excellentStudentData = await getStarStudentData()
+
     // note 调试小技巧，用ctx body调试
     // ctx.body = collectionData
     await ctx.render('index', {
@@ -38,18 +40,6 @@ class Index {
       linkData,
       manualData,
       qr
-    })
-  }
-
-  async list(ctx, next) {
-    await ctx.render('list', {
-      CONFIG: page_config.LIST
-    })
-  }
-
-  async error(ctx, next) {
-    await ctx.render('error', {
-      CONFIG: page_config.ERROR
     })
   }
 }
