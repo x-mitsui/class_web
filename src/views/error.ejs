@@ -1,3 +1,11 @@
 <%- include("./layout/head.ejs",{CONFIG})%>
-  404
-  <%- include("./layout/foot.ejs",{CONFIG})%>
+<div class="container">
+  <%- include('template/common/header/index.ejs') %>
+  <%- include("./template/error/index.ejs")%>
+  <%- include('template/common/footer/index.ejs',{
+    linkData,
+    manualData,
+    qr
+}) %>
+</div>
+<%- include("./layout/foot.ejs",{CONFIG})%>
