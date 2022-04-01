@@ -1,8 +1,12 @@
-<% var SCRIPTS=CONFIG.SCRIPTS %>
+<% 
+  var SCRIPTS = CONFIG.SCRIPTS 
+  for(var i = 0, len=SCRIPTS.length; i < len; i++){ 
+%>
 
-  <%for(var i=0,len=SCRIPTS.length;i<len;i++){%>
-    <script src="<%=SCRIPTS[i]%>"></script>
-    <%}%>
-      </body>
+<script src="<%=SCRIPTS[i]%>"></script>
 
-      </html>
+<% } %>
+
+</body>
+
+</html>
