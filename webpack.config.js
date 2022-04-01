@@ -6,6 +6,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const config = {
   mode: 'development',
+  devtool: 'cheap-source-map',
   entry: {
     index: path.resolve(__dirname, './src/js/index.js'),
     list: path.resolve(__dirname, './src/js/list.js'),
