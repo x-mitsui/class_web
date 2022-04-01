@@ -24,6 +24,6 @@ export default class HeaderSearch {
       return
     }
 
-    window.open('/list/' + val)
+    window.open('/list/' + val, '_self')
   }
 }
