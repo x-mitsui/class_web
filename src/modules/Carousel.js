@@ -35,6 +35,7 @@ export default class Carousel {
   }
 
   mouseInout(e) {
+    e.preventDefault()
     const eventType = getEventType(e)
 
     switch (eventType) {
@@ -50,6 +51,7 @@ export default class Carousel {
   }
 
   onCarouselClick(e) {
+    e.preventDefault()
     const tar = getTarget(e)
     const className = tar.className
 
