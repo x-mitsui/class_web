@@ -59,4 +59,22 @@ function trimSpace(str) {
   return str.replace(/\s+/g, '')
 }
 
-export { getTarget, getEventType, Interval, throttle, debounce, trimSpace }
+function tplReplace(template, replaceObj) {
+  return template.replace(/{{(.*?)}}/g, (Obj, key) => {
+    return replaceObj[key]
+  })
+}
+
+function filterData(data, id) {
+  console.log('id:', id)
+  id = Number(id)
+  if (id === 0) {
+    return data
+  }
+
+  return data.filter((item, index) => {
+    return item.field === id
+  })
+}
+
+export { getTarget, getEventType, Interval, throttle, debounce, trimSpace, tplReplace, filterData }
