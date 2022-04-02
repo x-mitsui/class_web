@@ -3,8 +3,8 @@ const env = require('./env_config'),
 
 const URL = {
   SOURCE: isPrd
-    ? '//??/' //线上地址
-    : '//localhost:3300/' //webpack本地内存打包后地址
+    ? '//tximg.codemongo.com/jsplusplus-source/' //线上地址
+    : '//localhost:3300/public/' //webpack本地内存打包后地址
 }
 
 module.exports = {
