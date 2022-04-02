@@ -1,4 +1,4 @@
-const StudentModel = require('../db/models/Student')
+const StudentModel = require('../db/models/student')
 
 class StudentService {
   async getStarStudentData() {

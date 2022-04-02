@@ -1,4 +1,4 @@
-const CollectionModel = require('../db/models/Collection')
+const CollectionModel = require('../db/models/collection')
 const { getCollectionCourseData } = require('./Course')
 class CollectionService {
   async getCollectionData() {

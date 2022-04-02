@@ -1,4 +1,4 @@
-const CourseTabModel = require('../db/models/CourseTab')
+const CourseTabModel = require('../db/models/courseTab')
 
 class CourseTabService {
   async getCourseTabData(idList) {

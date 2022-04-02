@@ -1,4 +1,4 @@
-const CourseModel = require('../db/models/Course')
+const CourseModel = require('../db/models/course')
 
 class CourseService {
   async getCollectionCourseData(idList) {
