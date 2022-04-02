@@ -1,21 +1,21 @@
 const path = require('path')
-const Uglify = require('uglifyjs-webpack-plugin')
-const Autoprefixer = require('autoprefixer')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
-const config = {
-  mode: 'development',
-  devtool: 'cheap-source-map',
+const { merge } = require('webpack-merge')
+
+const prodConfig = require('./webpack.prod.config')
+const devConfig = require('./webpack.dev.config')
+
+const commonConfig = (isProduction) => ({
   entry: {
     index: path.resolve(__dirname, './src/js/index.js'),
     list: path.resolve(__dirname, './src/js/list.js'),
     error: path.resolve(__dirname, './src/js/error.js')
   },
   output: {
-    path: path.resolve(__dirname, '/public'),
+    path: path.resolve(__dirname, './public'),
     filename: 'js/[name].js',
-    publicPath: '/'
+    publicPath: '/sss/' //这里没效果，因为ejs中写死了
   },
   module: {
     rules: [
@@ -37,14 +37,13 @@ const config = {
         test: /\.scss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: process.env.NODE_ENV === 'development'
-            }
+            loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
+            // options: {
+            //   hmr: process.env.NODE_ENV === 'development'
+            // }
           },
 
           'css-loader',
-
           'postcss-loader',
           {
             loader: 'sass-loader',
@@ -59,14 +58,13 @@ const config = {
         test: /\.css$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: process.env.NODE_ENV === 'development'
-            }
+            loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
+            // options: {
+            //   hmr: process.env.NODE_ENV === 'development'
+            // }
           },
 
           'css-loader',
-
           'postcss-loader'
         ]
       },
@@ -77,11 +75,12 @@ const config = {
         // type: "asset/inline", url-loader
         type: 'asset',
         generator: {
-          filename: 'img/[name].[hash:6][ext]'
+          filename: 'img/[name][ext]',
+          publicPath: '../'
         },
         parser: {
           dataUrlCondition: {
-            maxSize: 100 * 1024
+            maxSize: 10 * 1024
           }
         }
       },
@@ -91,36 +90,26 @@ const config = {
 
         type: 'asset/resource',
         generator: {
-          filename: 'font/[name].[hash:6][ext]'
+          filename: 'font/[name][ext]',
+          // 设置导出的文件，url的前缀
+          publicPath: '../'
         }
       }
     ]
   },
-
   plugins: [
-    new Uglify(),
-    new OptimizeCssAssetsPlugin({}),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
     })
-  ],
+  ]
+})
 
-  devServer: {
-    watchFiles: {
-      paths: ['src/**/*'],
-      options: {
-        ignored: /node_modules/
-      }
-    },
-    // static:path.resolve(__dirname,"app/public/"),
-    host: 'localhost',
-    port: 3300
-  },
-  stats: {
-    // preset: 'minimal',
-    // moduleTrace: true,
-    errorDetails: true
-  }
+module.exports = function (env) {
+  const isProduction = env.production
+  process.env.NODE_ENV = isProduction ? 'production' : 'development'
+
+  const config = isProduction ? prodConfig : devConfig
+  const mergeConfig = merge(commonConfig(isProduction), config)
+
+  return mergeConfig
 }
-
-module.exports = config
