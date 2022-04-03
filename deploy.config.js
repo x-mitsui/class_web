@@ -35,7 +35,7 @@ module.exports = {
       repo: 'https://gitee.com/x_mitsui/class_web.git',
       path: '/www/jspp_home/production',
       'pre-deploy': 'git fetch --all',
-      'post-deploy': 'yarn && yarn prd'
+      'post-deploy': 'pnpm install && pnpm run prd'
     }
   }
 }
