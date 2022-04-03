@@ -1,6 +1,5 @@
 node_modules
 configs/db_config.js
-configs/db_config.js
 yarn-error.log
-qiniu.js
+configs/qiniu.js
 public
