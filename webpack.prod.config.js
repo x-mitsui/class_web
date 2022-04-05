@@ -12,16 +12,16 @@ const config = {
   plugins: [
     new CleanWebpackPlugin(),
     new Uglify(),
-    new OptimizeCssAssetsPlugin({})
+    new OptimizeCssAssetsPlugin({}),
 
-    // new QiniuUploadPlugin({
-    //   accessKey: keys.ak,
-    //   secretKey: keys.sk,
-    //   bucket: bucket.name,
-    //   publicPath: path.resolve(process.cwd(), localPath),
-    //   zone,
-    //   cover: true
-    // })
+    new QiniuUploadPlugin({
+      accessKey: keys.ak,
+      secretKey: keys.sk,
+      bucket: bucket.name,
+      publicPath: path.resolve(process.cwd(), localPath),
+      zone,
+      cover: true
+    })
   ]
 }
 
