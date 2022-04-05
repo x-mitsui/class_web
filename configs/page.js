@@ -1,9 +1,8 @@
 const env = require('./env_config'),
-  isPrd = env.isPrd
-
+  isProd = env.isProd
 const URL = {
-  SOURCE: isPrd
-    ? '//tximg.codemongo.com/jsplusplus-source/' //线上地址
+  SOURCE: isProd
+    ? '//txstaticres.codemongo.com/' //线上地址
     : '//localhost:3300/public/' //webpack本地内存打包后地址
 }
 
