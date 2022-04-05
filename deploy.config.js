@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'official_jspp_home',
+      name: 'txclass_web',
       script: 'app.js',
       // cwd: './', // 当前工作路径
       // watch: true, // 监控变化的目录
@@ -34,8 +34,9 @@ module.exports = {
       user: 'root',
       host: '47.94.144.41',
       ref: 'origin/main',
-      repo: 'https://gitee.com/x_mitsui/class_web.git',
-      path: '/www/jspp_home/production',
+      repo: 'git@gitee.com:x_mitsui/txclass_web.git',
+      ssh_options: 'StrictHostKeyChecking=no',
+      path: '/www/txclass_web/production',
       'pre-deploy': 'git fetch --all',
       'post-deploy': 'pnpm install && pnpm run prd'
     }
