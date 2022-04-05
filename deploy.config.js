@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'txclass_web',
       script: 'bin/www',
-      // cwd: './', // 当前工作路径
+      cwd: './', // 当前工作路径
       // watch: true, // 监控变化的目录
       // exec_mode: 'cluster', // 集群模式
       // instances: 'max', // 实例数量
